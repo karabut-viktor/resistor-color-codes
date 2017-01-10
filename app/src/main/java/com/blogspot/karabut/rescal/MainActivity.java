@@ -12,7 +12,6 @@ public class MainActivity extends Activity {
 		{6, 5 ,5, 4, 7, 2},
 	};
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,50 +29,13 @@ public class MainActivity extends Activity {
 
             ActionBar.Tab bandTab = actionBar
                     .newTab()
-                    .setText(getString(R.string.tab_band_4).toUpperCase())
+                    .setText(getTabTitle(i))
                     .setTabListener(new FragmentTabListener(this, "4 band", fragment));
 
             actionBar.addTab(bandTab);
         }
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.activity_main, menu);
-//        return true;
-//    }
-
-    
-
-//
-//    /**
-//     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to one of the primary
-//     * sections of the app.
-//     */
-//    public class SectionsPagerAdapter extends FragmentPagerAdapter {
-//
-//        public SectionsPagerAdapter(FragmentManager fm) {
-//            super(fm);
-//        }
-//
-//        @Override
-//        public Fragment getItem(int i) {
-//            Fragment fragment = new ResistorFragment();
-//
-//            Bundle args = new Bundle();
-//            args.putInt(ResistorFragment.KEY_ID, i);
-//            args.putIntArray(ResistorFragment.KEY_BANDS, INITIAL_BANDS[i]);
-//            fragment.setArguments(args);
-//
-//            return fragment;
-//        }
-//
-//        @Override
-//        public int getCount() {
-//            return 3;
-//        }
-//
-//        @Override
     private CharSequence getTabTitle(int position) {
         switch (position) {
             case 0: return getString(R.string.tab_band_4).toUpperCase();
@@ -82,6 +44,4 @@ public class MainActivity extends Activity {
         }
         return null;
     }
-//    }
-
 }
