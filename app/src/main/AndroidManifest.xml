@@ -4,8 +4,8 @@
     android:versionName="2.0a" >
 
     <uses-sdk
-        android:minSdkVersion="7"
-        android:targetSdkVersion="15" />
+        android:minSdkVersion="15"
+        android:targetSdkVersion="25" />
     <supports-screens
                   android:smallScreens="true"
                   android:normalScreens="true"

@@ -1,16 +1,14 @@
 package com.blogspot.karabut.rescal;
 
-import com.actionbarsherlock.app.SherlockListActivity;
-import com.actionbarsherlock.view.MenuItem;
-
+import android.app.ListActivity;
 import android.os.Bundle;
 import android.content.Intent;
-import android.support.v4.app.NavUtils;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 
-public class SelectActivity extends SherlockListActivity {
+public class SelectActivity extends ListActivity {
 	private static final String TAG = "SelectActivity";
 	
 	public static final String EXTRA_RESISTOR_SIZE = "EXTRA_RESISTOR_SIZE";
@@ -26,7 +24,7 @@ public class SelectActivity extends SherlockListActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
         
         int resistorSize = getIntent().getIntExtra(EXTRA_RESISTOR_SIZE, 0);
         int bandNumber   = getIntent().getIntExtra(EXTRA_BAND_NUMBER,   0);
@@ -53,7 +51,7 @@ public class SelectActivity extends SherlockListActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
+                //NavUtils.navigateUpFromSameTask(this);
                 return true;
             default:
             	Log.w(TAG, "onOptionsItemSeleceted: id = " + item.getItemId());
