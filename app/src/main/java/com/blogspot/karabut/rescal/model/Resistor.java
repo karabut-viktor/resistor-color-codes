@@ -29,9 +29,9 @@ public class Resistor {
       mult = colors.get(2).getMultiplier();
     }  else  {
       value = new BigDecimal(
-          + colors.get(1).getDigit() * 100
+          + colors.get(0).getDigit() * 100
           + colors.get(1).getDigit() * 10
-          + colors.get(1).getDigit() * 1);
+          + colors.get(2).getDigit() * 1);
       mult = colors.get(3).getMultiplier();
     }
 
