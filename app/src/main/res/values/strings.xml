@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Resistor Color Codes</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">Resistor Color Codes</string>
+    <string name="title_activity_select">Choose color</string>
+    
+    <string name="tab_band_4">4 band</string>
+    <string name="tab_band_5">5 band</string>
+    <string name="tab_band_6">6 band</string>
+    
+    <string name="description_digit_first">First significant figure is %1$s</string>
+    <string name="description_digit_second">Second significant figure is %1$s</string>
+    <string name="description_digit_third">Third significant figure is %1$s</string>
+    <string name="description_multiplier">Multiplier: %1$s</string>
+    <string name="description_multiplier_without">Without multiplier</string>
+    <string name="description_tolerance">Tolerance: ±%1$s%%</string>
+    <string name="description_temperature">Temperature coefficent: %1$sppm/°C</string>
+    
+    <string name="prefix_kilo">k</string>
+    <string name="prefix_mega">M</string>
+    
+    <!--  for editor only -->
+    <string name="default_value">10 Ohm ±10%</string>
+    <string name="default_nearest_nominal">Nearest E6 values is 3.6kOhm.</string>
+    
+    <string name="value_text">%1$sΩ ±%2$s%%</string>
+    <string name="value_text_temperature">%1$sΩ ±%2$s%% %3$sppm/°C</string>
+    
+    <string name="nearest_value_equal_E6">This is E6 value.</string>
+    <string name="nearest_value_equal_E12">This is E12 value.</string>
+	<string name="nearest_value_E6">Nearest E6 and E12 value is %1$sOhm.</string>
+ 	<string name="nearest_value_E6_and_E12">Nearest E6 — %1$sOhm, E12 — %2$sOhm.</string>
+</resources>

@@ -1,0 +1,17 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="AppTheme" parent="Theme.Sherlock" />
+    <style name="HeaderFont" parent="@android:style/TextAppearance.Large" />
+
+    <style name="NoteFont"	parent="@android:style/TextAppearance.Small" >
+        <item name="android:textColor">@android:color/secondary_text_dark</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="RegularFont" parent="@android:style/TextAppearance.Small" >
+        <item name="android:textColor">@android:color/secondary_text_dark</item>
+    </style>
+    <style name="SubheaderFont" parent="@android:style/TextAppearance.Medium" >
+        <item name="android:textColor">@android:color/primary_text_dark</item>
+    </style>
+
+</resources>

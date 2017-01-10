@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+	<com.blogspot.karabut.rescal.ResistorView
+	    android:id="@+id/resistor"
+	    android:layout_width="176dp"
+	    android:layout_height="80dp"
+	    android:layout_gravity="center_horizontal"
+	    android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/valueText"
+        style="@style/HeaderFont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/default_value" />
+
+    <TextView
+        android:id="@+id/preferedValue"
+        style="@style/RegularFont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/default_nearest_nominal" />
+
+    <ListView
+        android:id="@+id/colorList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:scrollbarStyle="outsideOverlay" >
+
+    </ListView>
+
+</LinearLayout>

@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Маркировка резисторов</string>
+    <string name="menu_settings">Настройки</string>
+    <string name="title_activity_main">Маркировка резисторов</string>
+    <string name="title_activity_select">Выберите цвет</string>
+    
+    <string name="tab_band_4">4-х полосный</string>
+    <string name="tab_band_5">5-и полосный</string>
+    <string name="tab_band_6">6-и полосный</string>
+    
+    <string name="description_digit_first">Первая значащая цифра: %1$s.</string>
+    <string name="description_digit_second">Вторая значащая цифра: %1$s.</string>
+    <string name="description_digit_third">Третья значащая цифра: %1$s.</string>
+    <string name="description_multiplier">Множитель — %1$s.</string>
+    <string name="description_multiplier_without">Без множителя.</string>
+    <string name="description_tolerance">Точность резистора: ±%1$s%%.</string>
+    <string name="description_temperature">Температурный коэффицент: %1$sppm/°C</string>
+    
+    <string name="prefix_kilo">к</string>
+    <string name="prefix_mega">М</string>
+    
+    <!--  for editor only -->
+    <string name="default_value">10 Ом ±10%</string>
+    <string name="default_nearest_nominal">Ближайшее E6 значение — 3.6кОм.</string>
+    
+    <string name="value_text">%1$sОм ±%2$s%%</string>
+    <string name="value_text_temperature">%1$sОм ±%2$s%% %3$sppm/°C</string>
+    
+    <string name="nearest_value_equal_E6">Входит в номинальный ряд E6.</string>
+    <string name="nearest_value_equal_E12">Входит в номинальный ряд E12.</string>
+	<string name="nearest_value_E6">Ближайшее E6 и E12 значение - %1$sОм.</string>
+ 	<string name="nearest_value_E6_and_E12">Ближайшее E6 — %1$sОм, E12 — %2$sОм.</string>
+</resources>
