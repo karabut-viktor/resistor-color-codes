@@ -8,6 +8,8 @@ android {
         applicationId "com.blogspot.karabut.rescal"
         minSdkVersion 7
         targetSdkVersion 15
+        versionCode 7
+        versionName "2.0a"
     }
 
     buildTypes {
