@@ -1,14 +1,6 @@
 package com.blogspot.karabut.rescal.model;
 
 public enum Color {
-
-//  new ColorBand(BROWN, TEMPERATURE, 100),
-//  new ColorBand(RED, TEMPERATURE, 50),
-//  new ColorBand(ORANGE, TEMPERATURE, 15),
-//  new ColorBand(YELLOW, TEMPERATURE, 25),
-//  new ColorBand(BLUE, TEMPERATURE, 10),
-//  new ColorBand(VIOLET, TEMPERATURE, 5),
-//  new ColorBand(WHITE, TEMPERATURE, 1),
   BLACK (   0,    0,   null,  null),
   BROWN (   1,    1,    "1", "100"),
   RED   (   2,    2,    "2",  "50"),
