@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
       ActionBar.Tab bandTab = actionBar
           .newTab()
           .setText(getTabTitle(i))
-          .setTabListener(new FragmentTabListener(this, "4 band", fragment));
+          .setTabListener(new FragmentTabListener(this, i, fragment));
 
       actionBar.addTab(bandTab);
     }
