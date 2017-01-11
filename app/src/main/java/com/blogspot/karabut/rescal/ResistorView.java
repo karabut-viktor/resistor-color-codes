@@ -1,6 +1,5 @@
 package com.blogspot.karabut.rescal;
 
-import com.blogspot.karabut.rescal.R;
 import com.blogspot.karabut.utils.BoxBlur;
 
 import android.content.Context;
@@ -101,7 +100,7 @@ public class ResistorView extends View {
   public void setBands(ColorBand[] bands) {
     int[] c = new int[bands.length];
     for (int i = 0; i < bands.length; i++) {
-      c[i] = bands[i].color;
+      c[i] = bands[i].color.ordinal();
     }
     setColors(c);
   }

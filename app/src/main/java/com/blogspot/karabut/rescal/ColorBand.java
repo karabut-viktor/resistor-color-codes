@@ -4,12 +4,14 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 
+import com.blogspot.karabut.rescal.model.Color;
+
 public class ColorBand {	
-	public final int color;
+	public final Color color;
 	public final int type;
 	public final int value;
 	
-	public ColorBand(int color, int type, int value) {
+	public ColorBand(Color color, int type, int value) {
 		// TODO additional checks
 		this.color = color;
 		this.type = type;
@@ -18,7 +20,7 @@ public class ColorBand {
 	
 	public String getTitle(Context context) {
 		Resources res = context.getResources();
-		return res.getStringArray(R.array.color_titles)[color];
+		return res.getStringArray(R.array.color_titles)[color.ordinal()];
 	}
 	
 	public String getDescription(Context context) {
@@ -45,7 +47,7 @@ public class ColorBand {
 		case ColorCode.TOLERANCE_HIGH:
 			return res.getString(R.string.description_tolerance, getTolerance());
 		case ColorCode.TEMPERATURE:
-			return res.getString(R.string.description_temperature, value);
+			return res.getString(R.string.description_temperature, String.valueOf(value));
 		default:
 			return null;
 		}
@@ -53,7 +55,7 @@ public class ColorBand {
 	
 	public Drawable getIcon(Context context) {
 		Resources res = context.getResources();
-		return res.obtainTypedArray(R.array.color_icons).getDrawable(color);
+		return res.obtainTypedArray(R.array.color_icons).getDrawable(color.ordinal());
 	}
 	
 	public String getTolerance() {

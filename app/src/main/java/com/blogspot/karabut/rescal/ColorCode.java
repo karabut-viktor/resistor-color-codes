@@ -2,27 +2,14 @@ package com.blogspot.karabut.rescal;
 
 import java.math.BigDecimal;
 
-import com.blogspot.karabut.rescal.R;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.Log;
 
+import static com.blogspot.karabut.rescal.model.Color.*;
+
 public class ColorCode {
   public static final String TAG = "ColorCode";
-
-  public static final int BLACK = 0;
-  public static final int BROWN = 1;
-  public static final int RED = 2;
-  public static final int ORANGE = 3;
-  public static final int YELLOW = 4;
-  public static final int GREEN = 5;
-  public static final int BLUE = 6;
-  public static final int VIOLET = 7;
-  public static final int GRAY = 8;
-  public static final int WHITE = 9;
-  public static final int SILVER = 10;
-  public static final int GOLD = 11;
 
   public static final int DIGIT1 = 0;
   public static final int DIGIT2 = 1;
