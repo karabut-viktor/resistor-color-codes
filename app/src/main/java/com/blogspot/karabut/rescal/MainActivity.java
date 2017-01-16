@@ -36,6 +36,14 @@ public class MainActivity extends Activity {
     }
   }
 
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    MenuInflater inflater = getMenuInflater();
+    inflater.inflate(R.menu.activity_select, menu);
+
+    return true;
+  }
+
   private CharSequence getTabTitle(int position) {
     switch (position) {
       case 0:
