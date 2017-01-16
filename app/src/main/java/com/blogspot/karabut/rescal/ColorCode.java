@@ -269,7 +269,7 @@ public class ColorCode {
     String tolerance = DEFAULT_TOLERANCE;
     for (ColorBandImpl band : bands) {
       if (band.type == TOLERANCE_HIGH || band.type == TOLERANCE_LOW) {
-        tolerance = band.getTolerance();
+        tolerance = band.color.getTolerance();
         break;
       }
     }

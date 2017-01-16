@@ -61,7 +61,7 @@ public class ColorBandImpl implements ColorBand {
 		return res.obtainTypedArray(R.array.color_icons).getDrawable(color.ordinal());
 	}
 	
-	public String getTolerance() {
+	private String getTolerance() {
 		// TODO check		
 		String tolerance = String.format("%.2f", 0.01*value);
 		return tolerance.replaceAll("[,\\.]?0+$", "");
@@ -91,5 +91,8 @@ public class ColorBandImpl implements ColorBand {
 			return null;
 		}
 	}
-	
+
+	public Color getColor() {
+		return color;
+	}
 }
