@@ -19,77 +19,77 @@ public class ColorCode {
   public static final int TOLERANCE_HIGH = 5;
   public static final int TEMPERATURE = 6;
 
-  private static final ColorBand[] DIGIT1_BANDS = {
-      new ColorBand(BROWN, DIGIT1, 1),
-      new ColorBand(RED, DIGIT1, 2),
-      new ColorBand(ORANGE, DIGIT1, 3),
-      new ColorBand(YELLOW, DIGIT1, 4),
-      new ColorBand(GREEN, DIGIT1, 5),
-      new ColorBand(BLUE, DIGIT1, 6),
-      new ColorBand(VIOLET, DIGIT1, 7),
-      new ColorBand(GRAY, DIGIT1, 8),
-      new ColorBand(WHITE, DIGIT1, 9),
+  private static final ColorBandImpl[] DIGIT1_BANDS = {
+      new ColorBandImpl(BROWN, DIGIT1, 1),
+      new ColorBandImpl(RED, DIGIT1, 2),
+      new ColorBandImpl(ORANGE, DIGIT1, 3),
+      new ColorBandImpl(YELLOW, DIGIT1, 4),
+      new ColorBandImpl(GREEN, DIGIT1, 5),
+      new ColorBandImpl(BLUE, DIGIT1, 6),
+      new ColorBandImpl(VIOLET, DIGIT1, 7),
+      new ColorBandImpl(GRAY, DIGIT1, 8),
+      new ColorBandImpl(WHITE, DIGIT1, 9),
   };
-  private static final ColorBand[] DIGIT2_BANDS = {
-      new ColorBand(BLACK, DIGIT2, 0),
-      new ColorBand(BROWN, DIGIT2, 1),
-      new ColorBand(RED, DIGIT2, 2),
-      new ColorBand(ORANGE, DIGIT2, 3),
-      new ColorBand(YELLOW, DIGIT2, 4),
-      new ColorBand(GREEN, DIGIT2, 5),
-      new ColorBand(BLUE, DIGIT2, 6),
-      new ColorBand(VIOLET, DIGIT2, 7),
-      new ColorBand(GRAY, DIGIT2, 8),
-      new ColorBand(WHITE, DIGIT2, 9),
+  private static final ColorBandImpl[] DIGIT2_BANDS = {
+      new ColorBandImpl(BLACK, DIGIT2, 0),
+      new ColorBandImpl(BROWN, DIGIT2, 1),
+      new ColorBandImpl(RED, DIGIT2, 2),
+      new ColorBandImpl(ORANGE, DIGIT2, 3),
+      new ColorBandImpl(YELLOW, DIGIT2, 4),
+      new ColorBandImpl(GREEN, DIGIT2, 5),
+      new ColorBandImpl(BLUE, DIGIT2, 6),
+      new ColorBandImpl(VIOLET, DIGIT2, 7),
+      new ColorBandImpl(GRAY, DIGIT2, 8),
+      new ColorBandImpl(WHITE, DIGIT2, 9),
   };
-  private static final ColorBand[] DIGIT3_BANDS = {
-      new ColorBand(BLACK, DIGIT3, 0),
-      new ColorBand(BROWN, DIGIT3, 1),
-      new ColorBand(RED, DIGIT3, 2),
-      new ColorBand(ORANGE, DIGIT3, 3),
-      new ColorBand(YELLOW, DIGIT3, 4),
-      new ColorBand(GREEN, DIGIT3, 5),
-      new ColorBand(BLUE, DIGIT3, 6),
-      new ColorBand(VIOLET, DIGIT3, 7),
-      new ColorBand(GRAY, DIGIT3, 8),
-      new ColorBand(WHITE, DIGIT3, 9),
+  private static final ColorBandImpl[] DIGIT3_BANDS = {
+      new ColorBandImpl(BLACK, DIGIT3, 0),
+      new ColorBandImpl(BROWN, DIGIT3, 1),
+      new ColorBandImpl(RED, DIGIT3, 2),
+      new ColorBandImpl(ORANGE, DIGIT3, 3),
+      new ColorBandImpl(YELLOW, DIGIT3, 4),
+      new ColorBandImpl(GREEN, DIGIT3, 5),
+      new ColorBandImpl(BLUE, DIGIT3, 6),
+      new ColorBandImpl(VIOLET, DIGIT3, 7),
+      new ColorBandImpl(GRAY, DIGIT3, 8),
+      new ColorBandImpl(WHITE, DIGIT3, 9),
   };
-  private static final ColorBand[] MULTIPLIER_BANDS = {
-      new ColorBand(SILVER, MULTIPLIER, -2),
-      new ColorBand(GOLD, MULTIPLIER, -1),
-      new ColorBand(BLACK, MULTIPLIER, 0),
-      new ColorBand(BROWN, MULTIPLIER, 1),
-      new ColorBand(RED, MULTIPLIER, 2),
-      new ColorBand(ORANGE, MULTIPLIER, 3),
-      new ColorBand(YELLOW, MULTIPLIER, 4),
-      new ColorBand(GREEN, MULTIPLIER, 5),
-      new ColorBand(BLUE, MULTIPLIER, 6),
-      new ColorBand(VIOLET, MULTIPLIER, 7),
+  private static final ColorBandImpl[] MULTIPLIER_BANDS = {
+      new ColorBandImpl(SILVER, MULTIPLIER, -2),
+      new ColorBandImpl(GOLD, MULTIPLIER, -1),
+      new ColorBandImpl(BLACK, MULTIPLIER, 0),
+      new ColorBandImpl(BROWN, MULTIPLIER, 1),
+      new ColorBandImpl(RED, MULTIPLIER, 2),
+      new ColorBandImpl(ORANGE, MULTIPLIER, 3),
+      new ColorBandImpl(YELLOW, MULTIPLIER, 4),
+      new ColorBandImpl(GREEN, MULTIPLIER, 5),
+      new ColorBandImpl(BLUE, MULTIPLIER, 6),
+      new ColorBandImpl(VIOLET, MULTIPLIER, 7),
   };
-  private static final ColorBand[] TOLERANCE_LOW_BANDS = {
-      new ColorBand(BROWN, TOLERANCE_LOW, 100),
-      new ColorBand(RED, TOLERANCE_LOW, 200),
-      new ColorBand(GOLD, TOLERANCE_LOW, 500),
-      new ColorBand(SILVER, TOLERANCE_LOW, 1000),
+  private static final ColorBandImpl[] TOLERANCE_LOW_BANDS = {
+      new ColorBandImpl(BROWN, TOLERANCE_LOW, 100),
+      new ColorBandImpl(RED, TOLERANCE_LOW, 200),
+      new ColorBandImpl(GOLD, TOLERANCE_LOW, 500),
+      new ColorBandImpl(SILVER, TOLERANCE_LOW, 1000),
   };
-  private static final ColorBand[] TOLERANCE_HIGH_BANDS = {
-      new ColorBand(GRAY, TOLERANCE_HIGH, 5),
-      new ColorBand(VIOLET, TOLERANCE_HIGH, 10),
-      new ColorBand(BLUE, TOLERANCE_HIGH, 25),
-      new ColorBand(GREEN, TOLERANCE_HIGH, 50),
-      new ColorBand(BROWN, TOLERANCE_HIGH, 100),
-      new ColorBand(RED, TOLERANCE_HIGH, 200),
-      new ColorBand(GOLD, TOLERANCE_HIGH, 500),
-      new ColorBand(SILVER, TOLERANCE_HIGH, 1000),
+  private static final ColorBandImpl[] TOLERANCE_HIGH_BANDS = {
+      new ColorBandImpl(GRAY, TOLERANCE_HIGH, 5),
+      new ColorBandImpl(VIOLET, TOLERANCE_HIGH, 10),
+      new ColorBandImpl(BLUE, TOLERANCE_HIGH, 25),
+      new ColorBandImpl(GREEN, TOLERANCE_HIGH, 50),
+      new ColorBandImpl(BROWN, TOLERANCE_HIGH, 100),
+      new ColorBandImpl(RED, TOLERANCE_HIGH, 200),
+      new ColorBandImpl(GOLD, TOLERANCE_HIGH, 500),
+      new ColorBandImpl(SILVER, TOLERANCE_HIGH, 1000),
   };
-  private static final ColorBand[] TEMPERATURE_BANDS = {
-      new ColorBand(BROWN, TEMPERATURE, 100),
-      new ColorBand(RED, TEMPERATURE, 50),
-      new ColorBand(ORANGE, TEMPERATURE, 15),
-      new ColorBand(YELLOW, TEMPERATURE, 25),
-      new ColorBand(BLUE, TEMPERATURE, 10),
-      new ColorBand(VIOLET, TEMPERATURE, 5),
-      new ColorBand(WHITE, TEMPERATURE, 1),
+  private static final ColorBandImpl[] TEMPERATURE_BANDS = {
+      new ColorBandImpl(BROWN, TEMPERATURE, 100),
+      new ColorBandImpl(RED, TEMPERATURE, 50),
+      new ColorBandImpl(ORANGE, TEMPERATURE, 15),
+      new ColorBandImpl(YELLOW, TEMPERATURE, 25),
+      new ColorBandImpl(BLUE, TEMPERATURE, 10),
+      new ColorBandImpl(VIOLET, TEMPERATURE, 5),
+      new ColorBandImpl(WHITE, TEMPERATURE, 1),
   };
 
   private static final int[] BANDS_4 = {
@@ -117,7 +117,7 @@ public class ColorCode {
   }
 
   /**
-   * Get {@link ColorBand} at specific position of resistance code table.
+   * Get {@link ColorBandImpl} at specific position of resistance code table.
    * <p>
    * For example, on 4 band resistor 3th band codes multiplier and at
    * 2nd position there is gold band with multiplier '0.1'.
@@ -127,11 +127,11 @@ public class ColorCode {
    * @param position     position of color
    * @param bandNr       position of band (0-5)
    * @param resistorSize resistor's size (4-6)
-   * @return immutable {@link ColorBand} object
+   * @return immutable {@link ColorBandImpl} object
    * @throws IllegalArgumentException In case of invalid color code position
    */
-  public static ColorBand getColorBand(int position, int bandNr, int resistorSize) {
-    ColorBand[] bands = getBandsByNrAndResistorSize(bandNr, resistorSize);
+  public static ColorBandImpl getColorBand(int position, int bandNr, int resistorSize) {
+    ColorBandImpl[] bands = getBandsByNrAndResistorSize(bandNr, resistorSize);
     if (position < 0 || bands.length <= position) {
       throw new IllegalArgumentException("There is no band at  " + position
           + ", bandNr = " + bandNr
@@ -141,14 +141,14 @@ public class ColorCode {
   }
 
   /**
-   * Get array of possible {@link ColorBand} at specific band number.
+   * Get array of possible {@link ColorBandImpl} at specific band number.
    *
    * @param bandNr       band number
    * @param resistorSize resistor's size (4-6)
-   * @return array of {@link ColorBand}
+   * @return array of {@link ColorBandImpl}
    * @throws IllegalArgumentException In case of invalid color code position
    */
-  public static ColorBand[] getBandsByNrAndResistorSize(int bandNr, int resistorSize) {
+  public static ColorBandImpl[] getBandsByNrAndResistorSize(int bandNr, int resistorSize) {
     if (bandNr < 0 || resistorSize <= bandNr) {
       throw new IllegalArgumentException("Invalid band nr " + bandNr);
     }
@@ -174,10 +174,10 @@ public class ColorCode {
   /**
    * Decode resistance value by color code.
    *
-   * @param bands Array of {@link ColorBand} objects
+   * @param bands Array of {@link ColorBandImpl} objects
    * @return resistance value
    */
-  public static BigDecimal decodeResistance(ColorBand[] bands) {
+  public static BigDecimal decodeResistance(ColorBandImpl[] bands) {
     BigDecimal value;
     int mult;
 
@@ -201,7 +201,7 @@ public class ColorCode {
     return value.scaleByPowerOfTen(mult);
   }
 
-  public static String getPrefferedValue(ColorBand[] bands, Context context) {
+  public static String getPrefferedValue(ColorBandImpl[] bands, Context context) {
     BigDecimal value = decodeResistance(bands);
     int e = -3;
     long v = value.scaleByPowerOfTen(3).longValue();
@@ -264,10 +264,10 @@ public class ColorCode {
     return value.toPlainString() + "\u2009" + prefix;
   }
 
-  public static String getValueText(ColorBand[] bands, Context context) {
+  public static String getValueText(ColorBandImpl[] bands, Context context) {
     String value = getScaledValue(decodeResistance(bands), context);
     String tolerance = DEFAULT_TOLERANCE;
-    for (ColorBand band : bands) {
+    for (ColorBandImpl band : bands) {
       if (band.type == TOLERANCE_HIGH || band.type == TOLERANCE_LOW) {
         tolerance = band.getTolerance();
         break;
@@ -288,7 +288,7 @@ public class ColorCode {
     }
   }
 
-  private static ColorBand[] getBandsByType(int type) {
+  private static ColorBandImpl[] getBandsByType(int type) {
     switch (type) {
       case DIGIT1:
         return DIGIT1_BANDS;

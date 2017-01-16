@@ -3,8 +3,6 @@ package com.blogspot.karabut.rescal;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import com.blogspot.karabut.rescal.R;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,46 +13,46 @@ import android.widget.TextView;
 
 public class BandListAdapter extends BaseAdapter {
   private LayoutInflater inflater;
-  private ArrayList<ColorBand> bands = new ArrayList<ColorBand>();
+  private ArrayList<ColorBandImpl> bands = new ArrayList<ColorBandImpl>();
 
   public BandListAdapter(Context context) {
     inflater = LayoutInflater.from(context);
   }
 
-  public BandListAdapter(Context context, Collection<ColorBand> bands) {
+  public BandListAdapter(Context context, Collection<ColorBandImpl> bands) {
     this(context);
-    this.bands = new ArrayList<ColorBand>(bands);
+    this.bands = new ArrayList<ColorBandImpl>(bands);
   }
 
-  public BandListAdapter(Context context, ColorBand[] bands) {
+  public BandListAdapter(Context context, ColorBandImpl[] bands) {
     this(context);
-    for (ColorBand band : bands) {
+    for (ColorBandImpl band : bands) {
       this.bands.add(band);
     }
   }
 
-  public void addBand(ColorBand band) {
+  public void addBand(ColorBandImpl band) {
     bands.add(band);
     notifyDataSetChanged();
   }
 
-  public void setBand(int position, ColorBand band) {
+  public void setBand(int position, ColorBandImpl band) {
     bands.set(position, band);
     notifyDataSetChanged();
   }
 
-  public ColorBand[] getBandsArray() {
-    ColorBand[] result = new ColorBand[bands.size()];
+  public ColorBandImpl[] getBandsArray() {
+    ColorBandImpl[] result = new ColorBandImpl[bands.size()];
     return bands.toArray(result);
   }
 
-  public ColorBand removeBand(int position) {
-    ColorBand band = bands.remove(position);
+  public ColorBandImpl removeBand(int position) {
+    ColorBandImpl band = bands.remove(position);
     notifyDataSetChanged();
     return band;
   }
 
-  public ColorBand getBand(int position) {
+  public ColorBandImpl getBand(int position) {
     return bands.get(position);
   }
 
@@ -89,7 +87,7 @@ public class BandListAdapter extends BaseAdapter {
     }
 
     Context context = parent.getContext();
-    ColorBand band = getBand(position);
+    ColorBandImpl band = getBand(position);
     holder.itemTitle.setText(band.getTitle(context));
     holder.itemDescription.setText(band.getDescription(context));
     holder.itemIcon.setImageDrawable(band.getIcon(context));

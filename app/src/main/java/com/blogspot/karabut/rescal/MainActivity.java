@@ -4,27 +4,41 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+
+import com.blogspot.karabut.rescal.model.Color;
+import com.blogspot.karabut.rescal.model.Resistor;
+import com.blogspot.karabut.rescal.model.Resistors;
 
 public class MainActivity extends Activity {
   static final int[][] INITIAL_BANDS = {
       {6, 5, 8, 1,},
       {6, 5, 6, 4, 7,},
-      {6, 5, 5, 4, 7, 2},
+      {6, 5, 6, 4, 7, 2},
+  };
+
+  private static final Resistor[] INITIAL_RESISTORS = {
+    Resistors.get(Color.BLUE, Color.GREEN, Color.GRAY, Color.BROWN),
+    Resistors.get(Color.BLUE, Color.GREEN, Color.BLUE, Color.YELLOW, Color.VIOLET),
+    Resistors.get(Color.BLUE, Color.GREEN, Color.BLUE, Color.YELLOW, Color.VIOLET, Color.BROWN),
   };
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+
     //setContentView(R.layout.activity_main);
 
     final ActionBar actionBar = getActionBar();
+    actionBar.setIcon(android.R.color.transparent);
     actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
     for (int i = 0; i < 3; i++) {
       Fragment fragment = new ResistorFragment();
       Bundle args = new Bundle();
       args.putInt(ResistorFragment.KEY_ID, i);
-      args.putIntArray(ResistorFragment.KEY_BANDS, INITIAL_BANDS[i]);
+      args.putSerializable(ResistorFragment.KEY_RESISTOR, INITIAL_RESISTORS[i]);
       fragment.setArguments(args);
 
       ActionBar.Tab bandTab = actionBar
@@ -33,6 +47,7 @@ public class MainActivity extends Activity {
           .setTabListener(new FragmentTabListener(this, i, fragment));
 
       actionBar.addTab(bandTab);
+
     }
   }
 

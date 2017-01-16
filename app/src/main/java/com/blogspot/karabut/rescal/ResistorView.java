@@ -1,13 +1,24 @@
 package com.blogspot.karabut.rescal;
 
-import com.blogspot.karabut.utils.BoxBlur;
-
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.*;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+
+import com.blogspot.karabut.rescal.model.Color;
+import com.blogspot.karabut.rescal.model.Resistor;
+import com.blogspot.karabut.rescal.model.Resistors;
+import com.blogspot.karabut.utils.BoxBlur;
+
+import java.util.List;
 
 public class ResistorView extends View {
   public final static String TAG = "ResistorView";
@@ -29,6 +40,7 @@ public class ResistorView extends View {
   private final static int[] BANDS_TYPE_6 = {BIG, SMALL, SMALL, SMALL, SMALL, BIG};
 
   private int[] colors = {3, 4, 5, 6};
+  private Resistor resistor = Resistors.get(Color.ORANGE, Color.YELLOW, Color.GREEN, Color.BLUE);
   Bitmap cacheBitmap;
   Bitmap bandsBig;
   Bitmap bandsSmall;
@@ -80,10 +92,11 @@ public class ResistorView extends View {
     setMeasuredDimension(width, height);
   }
 
-  public void setColors(int[] colors) {
-    this.colors = new int[colors.length];
-    System.arraycopy(colors, 0, this.colors, 0, colors.length);
-    new Thread(updateCacheRunnable).start();
+  public void setResistor(Resistor resistor) {
+    if (!this.resistor.equals(resistor)) {
+      this.resistor = resistor;
+      new Thread(updateCacheRunnable).start();
+    }
   }
 
   private Runnable updateCacheRunnable = new Runnable() {
@@ -97,12 +110,12 @@ public class ResistorView extends View {
     }
   };
 
-  public void setBands(ColorBand[] bands) {
-    int[] c = new int[bands.length];
+  public void setBands(ColorBandImpl[] bands) {
+    Color[] cs = new Color[bands.length];
     for (int i = 0; i < bands.length; i++) {
-      c[i] = bands[i].color.ordinal();
+      cs[i] = bands[i].color;
     }
-    setColors(c);
+    setResistor(Resistors.get(cs));
   }
 
 
@@ -127,7 +140,7 @@ public class ResistorView extends View {
 
     // set eraser
     Paint eraser = new Paint();
-    eraser.setColor(Color.TRANSPARENT);
+    eraser.setColor(android.graphics.Color.TRANSPARENT);
     eraser.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
 
     int bodyWidth = body.getWidth();
@@ -148,17 +161,18 @@ public class ResistorView extends View {
     int width;
 
     int sourceWidth = bandsBig.getWidth() / COLOR_NUM;
-    if (colors.length == 4) {
+    List<Color> colors = this.resistor.getColors();
+    if (colors.size() == 4) {
       width = (int) Math.round(BAND_WIDTH_4D * sourceWidth);
       offset = BANDS_OFFSET_4D;
       type = BANDS_TYPE_4;
     }
-    else if (colors.length == 5) {
+    else if (colors.size() == 5) {
       width = (int) Math.round(BAND_WIDTH_5D * sourceWidth);
       offset = BANDS_OFFSET_5D;
       type = BANDS_TYPE_5;
     }
-    else if (colors.length == 6) {
+    else if (colors.size() == 6) {
       width = (int) Math.round(BAND_WIDTH_6D * sourceWidth);
       offset = BANDS_OFFSET_6D;
       type = BANDS_TYPE_6;
@@ -169,8 +183,8 @@ public class ResistorView extends View {
     }
 
     // draw color bands
-    for (int i = 0; i < colors.length; i++) {
-      src.left = colors[i] * sourceWidth;
+    for (int i = 0; i < colors.size(); i++) {
+      src.left = colors.get(i).ordinal() * sourceWidth;
       src.right = src.left + width;
       dst.left = (int) Math.round(offset[i] * bodyWidth);
       dst.right = dst.left + width;

@@ -27,7 +27,7 @@ public class SelectActivity extends ListActivity {
     getActionBar().setDisplayHomeAsUpEnabled(true);
     int resistorSize = getIntent().getIntExtra(EXTRA_RESISTOR_SIZE, 0);
     int bandNumber = getIntent().getIntExtra(EXTRA_BAND_NUMBER, 0);
-    ColorBand[] bands = ColorCode.getBandsByNrAndResistorSize(bandNumber, resistorSize);
+    ColorBandImpl[] bands = ColorCode.getBandsByNrAndResistorSize(bandNumber, resistorSize);
     setListAdapter(new BandListAdapter(this, bands));
   }
 
