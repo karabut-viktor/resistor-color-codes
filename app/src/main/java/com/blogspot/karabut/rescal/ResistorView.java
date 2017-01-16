@@ -110,15 +110,6 @@ public class ResistorView extends View {
     }
   };
 
-  public void setBands(ColorBandImpl[] bands) {
-    Color[] cs = new Color[bands.length];
-    for (int i = 0; i < bands.length; i++) {
-      cs[i] = bands[i].color;
-    }
-    setResistor(Resistors.get(cs));
-  }
-
-
   @Override
   protected void onDraw(Canvas canvas) {
     synchronized (cacheBitmap) {
@@ -161,7 +152,7 @@ public class ResistorView extends View {
     int width;
 
     int sourceWidth = bandsBig.getWidth() / COLOR_NUM;
-    List<Color> colors = this.resistor.getColors();
+    List<Color> colors = this.resistor;
     if (colors.size() == 4) {
       width = (int) Math.round(BAND_WIDTH_4D * sourceWidth);
       offset = BANDS_OFFSET_4D;

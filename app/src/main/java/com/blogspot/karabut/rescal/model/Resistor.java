@@ -4,9 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
-public interface Resistor extends Serializable {
-  List<Color> getColors();
-
+public interface Resistor extends List<Color>, Serializable {
   BigDecimal getResistance();
 
   String getTolerance();

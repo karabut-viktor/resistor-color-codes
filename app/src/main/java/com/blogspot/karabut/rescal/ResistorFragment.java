@@ -13,6 +13,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.blogspot.karabut.rescal.colorcode.ColorBand;
+import com.blogspot.karabut.rescal.colorcode.ColorCode;
 import com.blogspot.karabut.rescal.model.Color;
 import com.blogspot.karabut.rescal.model.Resistor;
 import com.blogspot.karabut.rescal.model.Resistors;
@@ -25,7 +27,6 @@ public class ResistorFragment extends Fragment {
   public static final int SELECT_REQUEST_CODE = 1337;
 
   public static final String KEY_ID = "KEY_ID";
-  public static final String KEY_BANDS = "KEY_BANDS";
   public static final String KEY_RESISTOR = "KEY_RESISTOR";
 
   private int id;
@@ -56,8 +57,8 @@ public class ResistorFragment extends Fragment {
     View view = inflater.inflate(R.layout.fragment_resistor, container, false);
     adapter = new BandListAdapter(getActivity());
 
-    for (int i = 0; i < resistor.getColors().size(); ++i) {
-      adapter.addBand(ColorCode.getColorBand(resistor.getColors().get(i).ordinal(), i, resistor.getColors().size()));
+    for (int i = 0; i < resistor.size(); ++i) {
+      adapter.addBand(ColorCode.getColorBand(resistor.get(i), i, resistor.size()));
     }
 
     ListView bandList = (ListView) view.findViewById(R.id.colorList);
@@ -93,7 +94,7 @@ public class ResistorFragment extends Fragment {
       return;
     }
 
-    ColorBandImpl[] bands = adapter.getBandsArray();
+    ColorBand[] bands = adapter.getBandsArray();
     if (valueText != null) {
       String text = ColorCode.getValueText(bands, getActivity());
       valueText.setText(text);
@@ -110,7 +111,7 @@ public class ResistorFragment extends Fragment {
   private void onBandClicked(int position) {
     Intent intent = new Intent(getActivity(), SelectActivity.class);
     intent.putExtra(SelectActivity.EXTRA_RESISTOR_ID, id);
-    intent.putExtra(SelectActivity.EXTRA_RESISTOR_SIZE, resistor.getColors().size());
+    intent.putExtra(SelectActivity.EXTRA_RESISTOR_SIZE, resistor.size());
     intent.putExtra(SelectActivity.EXTRA_BAND_NUMBER, position);
     startActivityForResult(intent, SELECT_REQUEST_CODE);
   }
@@ -123,9 +124,9 @@ public class ResistorFragment extends Fragment {
         int bandNr = data.getIntExtra(SelectActivity.RESULT_BAND_NUMBER, 0);
         int position = data.getIntExtra(SelectActivity.RESULT_POSITION, 0);
 
-        ArrayList<Color> colors = new ArrayList<Color>(resistor.getColors());
-        ColorBandImpl band = ColorCode.getColorBand(position, bandNr, colors.size());
-        colors.set(bandNr, band.color);
+        ArrayList<Color> colors = new ArrayList<Color>(resistor);
+        ColorBand band = ColorCode.getColorBand(position, bandNr, colors.size());
+        colors.set(bandNr, band.getColor());
         resistor = Resistors.get(colors);
         adapter.setBand(bandNr, band);
         updateBands();

@@ -1,4 +1,4 @@
-package com.blogspot.karabut.rescal;
+package com.blogspot.karabut.rescal.colorcode;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;

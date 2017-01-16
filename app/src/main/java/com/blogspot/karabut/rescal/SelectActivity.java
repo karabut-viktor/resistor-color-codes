@@ -1,12 +1,15 @@
 package com.blogspot.karabut.rescal;
 
 import android.app.ListActivity;
-import android.os.Bundle;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
+
+import com.blogspot.karabut.rescal.colorcode.ColorBand;
+import com.blogspot.karabut.rescal.colorcode.ColorCode;
 
 public class SelectActivity extends ListActivity {
   private static final String TAG = "SelectActivity";
@@ -27,7 +30,7 @@ public class SelectActivity extends ListActivity {
     getActionBar().setDisplayHomeAsUpEnabled(true);
     int resistorSize = getIntent().getIntExtra(EXTRA_RESISTOR_SIZE, 0);
     int bandNumber = getIntent().getIntExtra(EXTRA_BAND_NUMBER, 0);
-    ColorBandImpl[] bands = ColorCode.getBandsByNrAndResistorSize(bandNumber, resistorSize);
+    ColorBand[] bands = ColorCode.getBandsByNrAndResistorSize(bandNumber, resistorSize);
     setListAdapter(new BandListAdapter(this, bands));
   }
 

@@ -19,7 +19,7 @@ public class MainActivity extends Activity {
   };
 
   private static final Resistor[] INITIAL_RESISTORS = {
-    Resistors.get(Color.BLUE, Color.GREEN, Color.GRAY, Color.BROWN),
+    Resistors.get(Color.BLUE, Color.GREEN, Color.VIOLET, Color.BROWN),
     Resistors.get(Color.BLUE, Color.GREEN, Color.BLUE, Color.YELLOW, Color.VIOLET),
     Resistors.get(Color.BLUE, Color.GREEN, Color.BLUE, Color.YELLOW, Color.VIOLET, Color.BROWN),
   };

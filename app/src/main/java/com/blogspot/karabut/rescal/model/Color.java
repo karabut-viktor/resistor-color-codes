@@ -7,9 +7,9 @@ public enum Color {
   ORANGE(   3,    3,   null,  "15"),
   YELLOW(   4,    4,   null,  "25"),
   GREEN (   5,    5,  "0.5",  null),
-  BLUE  (   6,    6, "0.25",  null),
-  VIOLET(   7,    7,  "0.1",  "10"),
-  GRAY  (   8, null, "0.05",   "5"),
+  BLUE  (   6,    6, "0.25",  "10"),
+  VIOLET(   7,    7,  "0.1",   "5"),
+  GRAY  (   8, null, "0.05",  null),
   WHITE (   9, null,   null,   "1"),
   GOLD  (null,   -1,    "5",  null),
   SILVER(null,   -2,   "10",  null);

@@ -1,10 +1,18 @@
-package com.blogspot.karabut.rescal;
+package com.blogspot.karabut.rescal.colorcode;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.Log;
+
+import com.blogspot.karabut.rescal.R;
+import com.blogspot.karabut.rescal.model.Color;
+import com.blogspot.karabut.rescal.model.Resistor;
+import com.blogspot.karabut.rescal.model.Resistors;
 
 import static com.blogspot.karabut.rescal.model.Color.*;
 
@@ -19,77 +27,85 @@ public class ColorCode {
   public static final int TOLERANCE_HIGH = 5;
   public static final int TEMPERATURE = 6;
 
-  private static final ColorBandImpl[] DIGIT1_BANDS = {
-      new ColorBandImpl(BROWN, DIGIT1, 1),
-      new ColorBandImpl(RED, DIGIT1, 2),
-      new ColorBandImpl(ORANGE, DIGIT1, 3),
-      new ColorBandImpl(YELLOW, DIGIT1, 4),
-      new ColorBandImpl(GREEN, DIGIT1, 5),
-      new ColorBandImpl(BLUE, DIGIT1, 6),
-      new ColorBandImpl(VIOLET, DIGIT1, 7),
-      new ColorBandImpl(GRAY, DIGIT1, 8),
-      new ColorBandImpl(WHITE, DIGIT1, 9),
+  private static final ColorBand[] DIGIT1_BANDS;
+  private static final ColorBand[] DIGIT2_BANDS;
+  private static final ColorBand[] DIGIT3_BANDS;
+  private static final ColorBand[] MULTIPLIER_BANDS;
+
+  static {
+    ArrayList<ColorBand> bands = new ArrayList<ColorBand>();
+    for (Color color : Color.values()) {
+      if (color.getDigit() != null && !BLACK.equals(color)) {
+        bands.add(new DigitColorBand(color, R.string.description_digit_first));
+      }
+    }
+    DIGIT1_BANDS = bands.toArray(new ColorBand[bands.size()]);
+  }
+
+  static {
+    ArrayList<ColorBand> bands = new ArrayList<ColorBand>();
+    for (Color color : Color.values()) {
+      if (color.getDigit() != null) {
+        bands.add(new DigitColorBand(color, R.string.description_digit_second));
+      }
+    }
+    DIGIT2_BANDS = bands.toArray(new ColorBand[bands.size()]);
+  }
+
+  static {
+    ArrayList<ColorBand> bands = new ArrayList<ColorBand>();
+    for (Color color : Color.values()) {
+      if (color.getDigit() != null) {
+        bands.add(new DigitColorBand(color, R.string.description_digit_third));
+      }
+    }
+    DIGIT3_BANDS = bands.toArray(new ColorBand[bands.size()]);
+  }
+
+  static {
+    ArrayList<ColorBand> bands = new ArrayList<ColorBand>();
+    for (Color color : Color.values()) {
+      if (color.getMultiplier() != null) {
+        bands.add(new MultiplierBand(color));
+      }
+    }
+    Collections.sort(bands, new Comparator<ColorBand>() {
+      @Override
+      public int compare(ColorBand cb1, ColorBand cb2) {
+        Integer mult1 = cb1.getColor().getMultiplier();
+        Integer mult2 = cb2.getColor().getMultiplier();
+        return mult1.compareTo(mult2);
+      }
+    });
+    MULTIPLIER_BANDS = bands.toArray(new ColorBand[bands.size()]);
+  }
+
+  private static final ColorBand[] TOLERANCE_LOW_BANDS = {
+      new ToleranceBand(BROWN),
+      new ToleranceBand(RED),
+      new ToleranceBand(GOLD),
+      new ToleranceBand(SILVER)
   };
-  private static final ColorBandImpl[] DIGIT2_BANDS = {
-      new ColorBandImpl(BLACK, DIGIT2, 0),
-      new ColorBandImpl(BROWN, DIGIT2, 1),
-      new ColorBandImpl(RED, DIGIT2, 2),
-      new ColorBandImpl(ORANGE, DIGIT2, 3),
-      new ColorBandImpl(YELLOW, DIGIT2, 4),
-      new ColorBandImpl(GREEN, DIGIT2, 5),
-      new ColorBandImpl(BLUE, DIGIT2, 6),
-      new ColorBandImpl(VIOLET, DIGIT2, 7),
-      new ColorBandImpl(GRAY, DIGIT2, 8),
-      new ColorBandImpl(WHITE, DIGIT2, 9),
+
+  private static final ColorBand[] TOLERANCE_HIGH_BANDS = {
+      new ToleranceBand(GRAY),
+      new ToleranceBand(VIOLET),
+      new ToleranceBand(BLUE),
+      new ToleranceBand(GREEN),
+      new ToleranceBand(BROWN),
+      new ToleranceBand(RED),
+      new ToleranceBand(GOLD),
+      new ToleranceBand(SILVER)
   };
-  private static final ColorBandImpl[] DIGIT3_BANDS = {
-      new ColorBandImpl(BLACK, DIGIT3, 0),
-      new ColorBandImpl(BROWN, DIGIT3, 1),
-      new ColorBandImpl(RED, DIGIT3, 2),
-      new ColorBandImpl(ORANGE, DIGIT3, 3),
-      new ColorBandImpl(YELLOW, DIGIT3, 4),
-      new ColorBandImpl(GREEN, DIGIT3, 5),
-      new ColorBandImpl(BLUE, DIGIT3, 6),
-      new ColorBandImpl(VIOLET, DIGIT3, 7),
-      new ColorBandImpl(GRAY, DIGIT3, 8),
-      new ColorBandImpl(WHITE, DIGIT3, 9),
-  };
-  private static final ColorBandImpl[] MULTIPLIER_BANDS = {
-      new ColorBandImpl(SILVER, MULTIPLIER, -2),
-      new ColorBandImpl(GOLD, MULTIPLIER, -1),
-      new ColorBandImpl(BLACK, MULTIPLIER, 0),
-      new ColorBandImpl(BROWN, MULTIPLIER, 1),
-      new ColorBandImpl(RED, MULTIPLIER, 2),
-      new ColorBandImpl(ORANGE, MULTIPLIER, 3),
-      new ColorBandImpl(YELLOW, MULTIPLIER, 4),
-      new ColorBandImpl(GREEN, MULTIPLIER, 5),
-      new ColorBandImpl(BLUE, MULTIPLIER, 6),
-      new ColorBandImpl(VIOLET, MULTIPLIER, 7),
-  };
-  private static final ColorBandImpl[] TOLERANCE_LOW_BANDS = {
-      new ColorBandImpl(BROWN, TOLERANCE_LOW, 100),
-      new ColorBandImpl(RED, TOLERANCE_LOW, 200),
-      new ColorBandImpl(GOLD, TOLERANCE_LOW, 500),
-      new ColorBandImpl(SILVER, TOLERANCE_LOW, 1000),
-  };
-  private static final ColorBandImpl[] TOLERANCE_HIGH_BANDS = {
-      new ColorBandImpl(GRAY, TOLERANCE_HIGH, 5),
-      new ColorBandImpl(VIOLET, TOLERANCE_HIGH, 10),
-      new ColorBandImpl(BLUE, TOLERANCE_HIGH, 25),
-      new ColorBandImpl(GREEN, TOLERANCE_HIGH, 50),
-      new ColorBandImpl(BROWN, TOLERANCE_HIGH, 100),
-      new ColorBandImpl(RED, TOLERANCE_HIGH, 200),
-      new ColorBandImpl(GOLD, TOLERANCE_HIGH, 500),
-      new ColorBandImpl(SILVER, TOLERANCE_HIGH, 1000),
-  };
-  private static final ColorBandImpl[] TEMPERATURE_BANDS = {
-      new ColorBandImpl(BROWN, TEMPERATURE, 100),
-      new ColorBandImpl(RED, TEMPERATURE, 50),
-      new ColorBandImpl(ORANGE, TEMPERATURE, 15),
-      new ColorBandImpl(YELLOW, TEMPERATURE, 25),
-      new ColorBandImpl(BLUE, TEMPERATURE, 10),
-      new ColorBandImpl(VIOLET, TEMPERATURE, 5),
-      new ColorBandImpl(WHITE, TEMPERATURE, 1),
+
+  private static final ColorBand[] TCR_BANDS = {
+      new TCRBand(BROWN),
+      new TCRBand(RED),
+      new TCRBand(ORANGE),
+      new TCRBand(YELLOW),
+      new TCRBand(BLUE),
+      new TCRBand(VIOLET),
+      new TCRBand(WHITE)
   };
 
   private static final int[] BANDS_4 = {
@@ -117,7 +133,7 @@ public class ColorCode {
   }
 
   /**
-   * Get {@link ColorBandImpl} at specific position of resistance code table.
+   * Get {@link ColorBand} at specific position of resistance code table.
    * <p>
    * For example, on 4 band resistor 3th band codes multiplier and at
    * 2nd position there is gold band with multiplier '0.1'.
@@ -127,11 +143,11 @@ public class ColorCode {
    * @param position     position of color
    * @param bandNr       position of band (0-5)
    * @param resistorSize resistor's size (4-6)
-   * @return immutable {@link ColorBandImpl} object
+   * @return immutable {@link ColorBand} object
    * @throws IllegalArgumentException In case of invalid color code position
    */
-  public static ColorBandImpl getColorBand(int position, int bandNr, int resistorSize) {
-    ColorBandImpl[] bands = getBandsByNrAndResistorSize(bandNr, resistorSize);
+  public static ColorBand getColorBand(int position, int bandNr, int resistorSize) {
+    ColorBand[] bands = getBandsByNrAndResistorSize(bandNr, resistorSize);
     if (position < 0 || bands.length <= position) {
       throw new IllegalArgumentException("There is no band at  " + position
           + ", bandNr = " + bandNr
@@ -140,15 +156,26 @@ public class ColorCode {
     return bands[position];
   }
 
+  public static ColorBand getColorBand(Color color, int bandNr, int resistorSize) {
+    ColorBand[] bands = getBandsByNrAndResistorSize(bandNr, resistorSize);
+    for (ColorBand band : bands) {
+      if (band.getColor().equals(color)) {
+        return band;
+      }
+    }
+
+    throw new IllegalArgumentException("Cannot find band with color " + color + " at position " + bandNr + " size " + resistorSize);
+  }
+
   /**
-   * Get array of possible {@link ColorBandImpl} at specific band number.
+   * Get array of possible {@link ColorBand} at specific band number.
    *
    * @param bandNr       band number
    * @param resistorSize resistor's size (4-6)
-   * @return array of {@link ColorBandImpl}
+   * @return array of {@link ColorBand}
    * @throws IllegalArgumentException In case of invalid color code position
    */
-  public static ColorBandImpl[] getBandsByNrAndResistorSize(int bandNr, int resistorSize) {
+  public static ColorBand[] getBandsByNrAndResistorSize(int bandNr, int resistorSize) {
     if (bandNr < 0 || resistorSize <= bandNr) {
       throw new IllegalArgumentException("Invalid band nr " + bandNr);
     }
@@ -174,34 +201,15 @@ public class ColorCode {
   /**
    * Decode resistance value by color code.
    *
-   * @param bands Array of {@link ColorBandImpl} objects
+   * @param bands Array of {@link ColorBand} objects
    * @return resistance value
    */
-  public static BigDecimal decodeResistance(ColorBandImpl[] bands) {
-    BigDecimal value;
-    int mult;
-
-    if (bands.length == 4) {
-      value = new BigDecimal(bands[0].value * 10 + bands[1].value);
-      mult = bands[2].value;
-      Log.d(TAG, "v = " + (bands[0].value * 10 + bands[1].value));
-      Log.d(TAG, "m = " + mult);
-    }
-    else if (bands.length == 5 || bands.length == 6) {
-      value = new BigDecimal(
-          bands[0].value * 100 +
-              bands[1].value * 10 +
-              bands[2].value);
-      mult = bands[3].value;
-    }
-    else {
-      throw new IllegalArgumentException("Unsupport bands number " + bands.length);
-    }
-
-    return value.scaleByPowerOfTen(mult);
+  public static BigDecimal decodeResistance(ColorBand[] bands) {
+    Resistor resistor = Resistors.get(toColors(bands));
+    return resistor.getResistance();
   }
 
-  public static String getPrefferedValue(ColorBandImpl[] bands, Context context) {
+  public static String getPrefferedValue(ColorBand[] bands, Context context) {
     BigDecimal value = decodeResistance(bands);
     int e = -3;
     long v = value.scaleByPowerOfTen(3).longValue();
@@ -264,31 +272,38 @@ public class ColorCode {
     return value.toPlainString() + "\u2009" + prefix;
   }
 
-  public static String getValueText(ColorBandImpl[] bands, Context context) {
+  public static String getValueText(ColorBand[] bands, Context context) {
     String value = getScaledValue(decodeResistance(bands), context);
-    String tolerance = DEFAULT_TOLERANCE;
-    for (ColorBandImpl band : bands) {
-      if (band.type == TOLERANCE_HIGH || band.type == TOLERANCE_LOW) {
-        tolerance = band.color.getTolerance();
-        break;
-      }
-    }
-
     Resources res = context.getResources();
-    if (bands.length == 6) {
-      String temperature = bands[5].value + "\u2009";
+
+    if (bands.length == 4) {
+      String tolerance = bands[3].getColor().getTolerance();
+      return res.getString(R.string.value_text, value, tolerance);
+    }
+    else if (bands.length == 5) {
+      String tolerance = bands[4].getColor().getTolerance();
+      return res.getString(R.string.value_text, value, tolerance);
+    }
+    else {
+      String temperature = bands[5].getColor().getTCR() + "\u2009";
+      String tolerance = bands[4].getColor().getTolerance();
       return res.getString(
           R.string.value_text_temperature,
           value,
           tolerance,
           temperature);
     }
-    else {
-      return res.getString(R.string.value_text, value, tolerance);
-    }
   }
 
-  private static ColorBandImpl[] getBandsByType(int type) {
+  private static Color[] toColors(ColorBand... bands) {
+    Color[] colors = new Color[bands.length];
+    for (int i = 0; i < bands.length; i++) {
+      colors[i] = bands[i].getColor();
+    }
+    return colors;
+  }
+
+  private static ColorBand[] getBandsByType(int type) {
     switch (type) {
       case DIGIT1:
         return DIGIT1_BANDS;
@@ -303,7 +318,7 @@ public class ColorCode {
       case TOLERANCE_HIGH:
         return TOLERANCE_HIGH_BANDS;
       case TEMPERATURE:
-        return TEMPERATURE_BANDS;
+        return TCR_BANDS;
       default:
         throw new IllegalArgumentException("Invalid band type " + type);
     }
