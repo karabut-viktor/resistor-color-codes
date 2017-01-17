@@ -11,7 +11,7 @@ class ToleranceBand extends AbstractColorBand {
     super(color);
 
     if (color.getTolerance() == null)
-      throw new IllegalArgumentException("Cannot create tolerance band with " + color);
+      throw new IllegalArgumentException("Cannot create ToleranceBand with " + color);
   }
 
   @Override

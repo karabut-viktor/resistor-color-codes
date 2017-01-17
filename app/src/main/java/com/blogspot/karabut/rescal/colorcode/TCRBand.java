@@ -11,7 +11,7 @@ class TCRBand extends AbstractColorBand {
       super(color);
 
       if (color.getTCR() == null)
-        throw new IllegalArgumentException("Cannot create tcr band with" + color);
+        throw new IllegalArgumentException("Cannot create TCRBand with " + color);
     }
 
     @Override

@@ -56,7 +56,7 @@ public class SelectActivity extends ListActivity {
         //NavUtils.navigateUpFromSameTask(this);
         return true;
       default:
-        Log.w(TAG, "onOptionsItemSeleceted: id = " + item.getItemId());
+        Log.w(TAG, "onOptionsItemSelected: id = " + item.getItemId());
     }
     return super.onOptionsItemSelected(item);
   }

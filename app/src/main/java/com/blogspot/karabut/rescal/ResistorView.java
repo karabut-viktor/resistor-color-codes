@@ -39,7 +39,6 @@ public class ResistorView extends View {
   private final static double[] BANDS_OFFSET_6D = {22d / 176, 52d / 176, 73d / 176, 94d / 176, 115d / 176, 142d / 176};
   private final static int[] BANDS_TYPE_6 = {BIG, SMALL, SMALL, SMALL, SMALL, BIG};
 
-  private int[] colors = {3, 4, 5, 6};
   private Resistor resistor = Resistors.get(Color.ORANGE, Color.YELLOW, Color.GREEN, Color.BLUE);
   Bitmap cacheBitmap;
   Bitmap bandsBig;

@@ -125,12 +125,8 @@ public class ColorCode {
       10, 12, 15, 18, 22, 27, 33, 39, 47, 56, 68, 82
   };
 
-  private static final String DEFAULT_TOLERANCE = "20";
   private static final BigDecimal THOUSAND = BigDecimal.ONE.scaleByPowerOfTen(3);
   private static final BigDecimal MILLION = BigDecimal.ONE.scaleByPowerOfTen(6);
-
-  private ColorCode(Context context) {
-  }
 
   /**
    * Get {@link ColorBand} at specific position of resistance code table.
@@ -209,7 +205,7 @@ public class ColorCode {
     return resistor.getResistance();
   }
 
-  public static String getPrefferedValue(ColorBand[] bands, Context context) {
+  public static String getPreferredValue(ColorBand[] bands, Context context) {
     BigDecimal value = decodeResistance(bands);
     int e = -3;
     long v = value.scaleByPowerOfTen(3).longValue();

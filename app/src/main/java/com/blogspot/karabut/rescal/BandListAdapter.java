@@ -21,11 +21,6 @@ public class BandListAdapter extends BaseAdapter {
     inflater = LayoutInflater.from(context);
   }
 
-  public BandListAdapter(Context context, Collection<ColorBand> bands) {
-    this(context);
-    this.bands = new ArrayList<ColorBand>(bands);
-  }
-
   public BandListAdapter(Context context, ColorBand[] bands) {
     this(context);
     for (ColorBand band : bands) {

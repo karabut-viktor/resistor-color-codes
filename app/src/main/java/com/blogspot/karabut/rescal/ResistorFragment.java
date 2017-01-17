@@ -100,7 +100,7 @@ public class ResistorFragment extends Fragment {
       valueText.setText(text);
     }
     if (preferedValue != null) {
-      String text = ColorCode.getPrefferedValue(bands, getActivity());
+      String text = ColorCode.getPreferredValue(bands, getActivity());
       preferedValue.setText(text);
     }
     if (resistorView != null) {

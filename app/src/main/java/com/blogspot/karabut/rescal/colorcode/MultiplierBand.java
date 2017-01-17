@@ -12,7 +12,7 @@ class MultiplierBand extends AbstractColorBand {
     super(color);
 
     if (color.getMultiplier() == null)
-      throw new IllegalArgumentException("Cannot create multiplier band with" + color);
+      throw new IllegalArgumentException("Cannot create MultiplierBand with" + color);
   }
 
   @Override

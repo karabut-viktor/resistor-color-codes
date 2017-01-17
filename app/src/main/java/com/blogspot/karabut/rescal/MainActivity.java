@@ -12,11 +12,6 @@ import com.blogspot.karabut.rescal.model.Resistor;
 import com.blogspot.karabut.rescal.model.Resistors;
 
 public class MainActivity extends Activity {
-  static final int[][] INITIAL_BANDS = {
-      {6, 5, 8, 1,},
-      {6, 5, 6, 4, 7,},
-      {6, 5, 6, 4, 7, 2},
-  };
 
   private static final Resistor[] INITIAL_RESISTORS = {
     Resistors.get(Color.BLUE, Color.GREEN, Color.VIOLET, Color.BROWN),
@@ -27,8 +22,6 @@ public class MainActivity extends Activity {
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-
-    //setContentView(R.layout.activity_main);
 
     final ActionBar actionBar = getActionBar();
     actionBar.setIcon(android.R.color.transparent);
@@ -47,7 +40,6 @@ public class MainActivity extends Activity {
           .setTabListener(new FragmentTabListener(this, i, fragment));
 
       actionBar.addTab(bandTab);
-
     }
   }
 
